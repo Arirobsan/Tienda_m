@@ -6,15 +6,15 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "categoria")
-public class Categoria implements Serializable {
+@Table(name = "producto")
+public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria")
-    public Long idCategoria;
+    @Column(name = "id_producto")
+    public Long idProducto;
     private String descripcion;
     private String rutaImagen;
     private boolean activo;

@@ -25,4 +25,22 @@ public class CategoriaServiceImpl
         return lista;
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Categoria getCategoria(Categoria categoria) {
+        return categoriaDAO.findById(categoria.getIdCategoria()).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public void save(Categoria categoria) {
+        categoriaDAO.save(categoria);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Categoria categoria) {
+        categoriaDAO.delete(categoria);
+    }
+
 }
