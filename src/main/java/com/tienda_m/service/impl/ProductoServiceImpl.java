@@ -43,4 +43,32 @@ public class ProductoServiceImpl
         productoDAO.delete(producto);
     }
 
+    // Esta consulta utiliza consultas ampliadas
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> metodoJPA(double precioInf, double precioSup) {
+        return productoDAO.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
+
+    }
+
+    // Esta consulta utiliza consultas JPQL
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> metodoJPQL(double precioInf, double precioSup) {
+        return productoDAO.metodoJPQL(precioInf, precioSup);
+    }
+
+    // Esta consulta utiliza consultas SQL
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> metodoSQL(double precioInf, double precioSup) {
+        return productoDAO.metodoSQL(precioInf, precioSup);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> metodoJPAE(int cantInf, int cantSup) {
+        return productoDAO.findByExistenciasBetweenOrderByDescripcion(cantInf, cantSup);
+    }
+
 }

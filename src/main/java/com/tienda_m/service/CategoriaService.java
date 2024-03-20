@@ -2,6 +2,7 @@ package com.tienda_m.service;
 
 import com.tienda_m.domain.Categoria;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public interface CategoriaService {
 

@@ -61,4 +61,5 @@ public class CategoriaController {
         categoriaService.delete(categoria);
         return "redirect:/categoria/listado";
     }
+
 }
