@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+
 <html 
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
     xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
         <title>lapagina</title>
@@ -9,9 +9,15 @@
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
-        
-        <footer th:replace="~{layout/plantilla :: footer}"/>
-        
+
+        <form method="post" th:action="@{/login}">
+            <input type="text" name="username"/><br/>
+            <input type="password" name="password"/><br/>
+            <input type="submit" value="Login"/>
+            </form>
+
+            <footer th:replace="~{layout/plantilla :: footer}"/>
+
     </body>
 </html>
 
