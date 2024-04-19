@@ -1,6 +1,5 @@
 package com.tienda_m.service.impl;
 
-import com.tienda_m.dao.UsuarioDAO;
 import com.tienda_m.domain.Rol;
 import com.tienda_m.domain.Usuario;
 import com.tienda_m.service.UsuarioDetailsService;
@@ -15,13 +14,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.tienda_m.dao.UsuarioDao;
 
 @Service("userDetailsService")
 public class UsuarioDetailsServiceImpl
         implements UsuarioDetailsService, UserDetailsService {
 
     @Autowired
-    private UsuarioDAO usuarioDao;
+    private UsuarioDao usuarioDao;
     
     @Autowired
     private HttpSession session;

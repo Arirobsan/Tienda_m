@@ -54,25 +54,25 @@ public class ProjectConfig implements WebMvcConfigurer {
 
     //En este método se establece la estructura de seguridad del sitio
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
-            http.authorizeHttpRequests( (request) -> 
-                    request.requestMatchers("/","/login","/js/**","/webjars/**")
-                    .permitAll()
-                    .requestMatchers("/categoria/listado","/producto/listado")
-                    .hasRole("VENDEDOR")
-                    .requestMatchers("/categoria/nuevo","/categoria/modificar/**",
-                            "/categoria/eliminar/**","/categoria/guardar",
-                            "/producto/nuevo","/producto/modificar/**",
-                            "/producto/eliminar/**","/producto/guardar","/pruebas/**")
-                    .hasRole("ADMIN")
-                    .requestMatchers("/facturar/carrito")
-                    .hasRole("USER")
-            ).formLogin((form) -> form.loginPage("/login").permitAll())
-                    .logout((logout) -> logout.permitAll());
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests((request)
+                -> request
+                        .requestMatchers("/", "/login", "/js/**", "/webjars/**","/registro/**")
+                        .permitAll()
+                        .requestMatchers("/categoria/listado", "/producto/listado")
+                        .hasRole("VENDEDOR")
+                        .requestMatchers("/categoria/nuevo", "/categoria/modificar/**",
+                                "/categoria/eliminar/**", "/categoria/guardar",
+                                "/producto/nuevo", "/producto/modificar/**",
+                                "/producto/eliminar/**", "/producto/guardar", "/pruebas/**")
+                        .hasRole("ADMIN")
+                        .requestMatchers("/facturar/carrito")
+                        .hasRole("USER")
+        ).formLogin((form) -> form.loginPage("/login").permitAll())
+                .logout((logout) -> logout.permitAll());
 
-            return http.build();
+        return http.build();
     }
-
 
 ////    Lo que sigue realmente no se usa en produccion, solo para pruebas...
 //    @Bean
@@ -92,14 +92,12 @@ public class ProjectConfig implements WebMvcConfigurer {
 //
 //        return  new InMemoryUserDetailsManager(usuario,vendedor,admin);
 //    }
-    
     @Autowired
     private UserDetailsService userDetailsService;
-    
+
     @Autowired
-    public void configureGlobal (AuthenticationManagerBuilder build) throws Exception{
+    public void configureGlobal(AuthenticationManagerBuilder build) throws Exception {
         build.userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
 }
- 
